@@ -6,10 +6,10 @@ const Navigation = (): React.ReactElement => {
     <NavigationStyled>
       <ul className="navigation">
         <li className="navigation-home">
-          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li className="navigation-add">
-          <NavLink to="/add">Add</NavLink>
+          <NavLink to="/">Add</NavLink>
         </li>
       </ul>
     </NavigationStyled>
