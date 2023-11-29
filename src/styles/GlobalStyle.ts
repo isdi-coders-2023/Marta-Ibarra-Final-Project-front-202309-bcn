@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   img {
-   width: 100%;
+  max-width: 100%
   }
 
   a {
@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
    border: none;
    background-color: transparent;
    font: inherit;
-   cursor: pointer;  
   }
 `;
 
