@@ -5,7 +5,6 @@ import { ThemeProvider } from "styled-components";
 import mainTheme from "./styles/mainTheme";
 import GlobalStyle from "./styles/GlobalStyle";
 import App from "./components/App/App";
-import Header from "./components/Header/Header";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -13,7 +12,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ThemeProvider theme={mainTheme}>
         <GlobalStyle />
         <App />
-        <Header />
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,

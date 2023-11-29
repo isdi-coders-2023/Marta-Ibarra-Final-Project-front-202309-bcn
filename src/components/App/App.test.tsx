@@ -2,25 +2,26 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../../styles/mainTheme";
-import Header from "./Header";
+import App from "./App";
 
-describe("Given a header component", () => {
+describe("Given a Navigation component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show 'La Galerie'", () => {
-      const expectedTitle = "La Galerie";
+    test("Then it should show 'Add'", () => {
+      const expectedAddText = "Add";
 
       render(
         <BrowserRouter>
           <ThemeProvider theme={mainTheme}>
-            <Header />
+            <App />
           </ThemeProvider>
         </BrowserRouter>,
       );
-      const headerTitle = screen.getByRole("heading", {
-        name: expectedTitle,
+
+      const expectedAddLink = screen.getByRole("link", {
+        name: expectedAddText,
       });
 
-      expect(headerTitle).toBeInTheDocument;
+      expect(expectedAddLink).toBeInTheDocument();
     });
   });
 });
