@@ -1,7 +1,8 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { paintingsReducer } from "./paintings/paintingsSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { paintingState: paintingsReducer },
 });
 
 export type AppDispatch = typeof store.dispatch;
