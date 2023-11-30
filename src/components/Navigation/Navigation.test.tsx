@@ -1,13 +1,15 @@
 import { screen } from "@testing-library/react";
 import Navigation from "./Navigation";
 import customRender from "../../testUtils/customRender";
+import paintingsMock from "../../testUtils/paintingsMock";
 
 describe("Given a Navigation component", () => {
   describe("When it is rendered", () => {
     test("Then it should show 'Home'", () => {
       const expectedHomeText = "Home";
+      const mockData = paintingsMock;
 
-      customRender(<Navigation />);
+      customRender(<Navigation />, mockData);
 
       const expectedHomeLink = screen.getByRole("link", {
         name: expectedHomeText,
