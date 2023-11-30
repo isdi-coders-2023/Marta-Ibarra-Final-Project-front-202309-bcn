@@ -12,6 +12,7 @@ const HeaderStyled = styled.header`
     line-height: normal;
     text-decoration-line: underline;
     text-align: center;
+    padding: 20px;
   }
 `;
 
