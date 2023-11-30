@@ -5,10 +5,10 @@ const Navigation = (): React.ReactElement => {
   return (
     <NavigationStyled>
       <ul className="navigation">
-        <li className="navigation-home">
+        <li>
           <NavLink to="/">Home</NavLink>
         </li>
-        <li className="navigation-add">Add</li>
+        <li>Add</li>
       </ul>
     </NavigationStyled>
   );
