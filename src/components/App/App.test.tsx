@@ -1,23 +1,16 @@
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import mainTheme from "../../styles/mainTheme";
+import { screen } from "@testing-library/react";
+
 import App from "./App";
+import customRender from "../../testUtils/customRender";
 
-describe("Given a Navigation component", () => {
+describe("Given an App component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show 'Add'", () => {
-      const expectedAddText = "Add";
+    test("Then it should show 'Homepage'", () => {
+      const expectedAddText = "Homepage";
 
-      render(
-        <BrowserRouter>
-          <ThemeProvider theme={mainTheme}>
-            <App />
-          </ThemeProvider>
-        </BrowserRouter>,
-      );
+      customRender(<App />);
 
-      const expectedAddLink = screen.getByRole("link", {
+      const expectedAddLink = screen.getByRole("heading", {
         name: expectedAddText,
       });
 
