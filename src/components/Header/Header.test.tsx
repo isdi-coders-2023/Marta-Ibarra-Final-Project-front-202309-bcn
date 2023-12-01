@@ -5,7 +5,7 @@ import paintingsMock from "../../testUtils/paintingsMock";
 
 describe("Given a header component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show 'La Galerie'", () => {
+    test("Then it should show a heading with 'La Galerie' written in it", () => {
       const expectedTitle = "La Galerie";
       const mockData = paintingsMock;
 

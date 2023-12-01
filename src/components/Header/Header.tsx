@@ -1,5 +1,5 @@
 import Navigation from "../Navigation/Navigation";
-import HeaderStyled from "./Header.styled";
+import HeaderStyled from "./HeaderStyled";
 
 const Header = (): React.ReactElement => {
   return (

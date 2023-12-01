@@ -5,7 +5,7 @@ import paintingsMock from "../../testUtils/paintingsMock";
 
 describe("Given a Navigation component", () => {
   describe("When it is rendered", () => {
-    test("Then it should show 'Home'", () => {
+    test("Then it should show a 'Home' link", () => {
       const expectedHomeText = "Home";
       const mockData = paintingsMock;
 

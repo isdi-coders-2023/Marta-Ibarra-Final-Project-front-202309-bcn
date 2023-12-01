@@ -9,6 +9,6 @@ export interface PaintingStructure {
   year: number;
 }
 
-export interface PaintingsStructure {
+export interface PaintingsStateStructure {
   paintings: PaintingStructure[];
 }
