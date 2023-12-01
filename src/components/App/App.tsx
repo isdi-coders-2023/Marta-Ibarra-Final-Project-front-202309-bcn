@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "../Header/Header";
-import AppStyled from "./App.styled";
+import AppStyled from "./AppStyled";
 import Homepage from "../../pages/Homepage/Homepage";
 
 const App = (): React.ReactElement => {
