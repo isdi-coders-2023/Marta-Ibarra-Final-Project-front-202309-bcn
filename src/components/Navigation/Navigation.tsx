@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import NavigationStyled from "./Navigation.Styled";
+import NavigationStyled from "./NavigationStyled";
 
 const Navigation = (): React.ReactElement => {
   return (

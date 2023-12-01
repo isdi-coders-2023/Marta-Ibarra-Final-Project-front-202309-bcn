@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HomepageStyled = styled.section`
+const HomepageStyled = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
