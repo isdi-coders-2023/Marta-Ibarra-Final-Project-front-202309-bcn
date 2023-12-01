@@ -1,27 +1,25 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PaintingStructure, PaintingsStructure } from "../types";
+import { PaintingStructure, PaintingsStateStructure } from "../types";
 
-const initialPaintings: PaintingsStructure = {
+const initialPaintingsState: PaintingsStateStructure = {
   paintings: [],
 };
 
-const paintingSlice = createSlice({
+const paintingsSlice = createSlice({
   name: "paintings",
-  initialState: initialPaintings,
+  initialState: initialPaintingsState,
   reducers: {
     loadPaintings: (
       currentState,
       action: PayloadAction<PaintingStructure[]>,
-    ): PaintingsStructure => {
-      return {
-        ...currentState,
-        paintings: action.payload,
-      };
-    },
+    ): PaintingsStateStructure => ({
+      ...currentState,
+      paintings: action.payload,
+    }),
   },
 });
 
 export const { loadPaintings: loadPaintingsActionCreator } =
-  paintingSlice.actions;
+  paintingsSlice.actions;
 
-export const paintingsReducer = paintingSlice.reducer;
+export const paintingsReducer = paintingsSlice.reducer;
