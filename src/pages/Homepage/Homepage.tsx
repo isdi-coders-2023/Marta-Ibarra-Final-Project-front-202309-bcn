@@ -1,16 +1,17 @@
-import HomepageStyled from "./Homepage.styled";
+import HomepageStyled from "./HomepageStyled";
 import paintingsMock from "../../testUtils/paintingsMock";
 import { loadPaintingsActionCreator } from "../../store/paintings/paintingsSlice";
+import PaintingsList from "../../components/PaintingsList/PaintingsList";
 import { useAppDispatch } from "../../store/hooks";
 
 const Homepage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const currentPaintings = paintingsMock;
-  dispatch(loadPaintingsActionCreator(currentPaintings));
+  dispatch(loadPaintingsActionCreator(paintingsMock));
 
   return (
     <HomepageStyled>
       <h2 className="section-title">Homepage</h2>
+      <PaintingsList />
     </HomepageStyled>
   );
 };

@@ -29,7 +29,7 @@ describe("Given an App component", () => {
 
       customRender(<App />, paintingsMock);
       const navLink = screen.getByRole("link", { name: link });
-      const homepageTitle = screen.getByRole("headin", { name: title });
+      const homepageTitle = screen.getByRole("heading", { name: title });
       user.click(navLink);
 
       expect(homepageTitle).toBeInTheDocument();
