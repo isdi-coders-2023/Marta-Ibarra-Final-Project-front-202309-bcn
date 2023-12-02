@@ -32,6 +32,13 @@ const PaintingCardStyled = styled.article`
   .card__image {
     padding: 10px;
   }
+
+  .card__button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+  }
 `;
 
 export default PaintingCardStyled;
