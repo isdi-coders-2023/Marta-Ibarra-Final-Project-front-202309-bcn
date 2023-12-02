@@ -1,4 +1,4 @@
-import paintingsMock from "../../testUtils/paintingsMock";
+import paintingsMock from "../../mocks/paintingsMock";
 import { PaintingsStateStructure } from "../types";
 import { loadPaintingsActionCreator, paintingsReducer } from "./paintingsSlice";
 

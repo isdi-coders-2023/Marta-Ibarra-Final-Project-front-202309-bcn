@@ -1,5 +1,5 @@
 import HomepageStyled from "./HomepageStyled";
-import paintingsMock from "../../testUtils/paintingsMock";
+import paintingsMock from "../../mocks/paintingsMock";
 import { loadPaintingsActionCreator } from "../../store/paintings/paintingsSlice";
 import PaintingsList from "../../components/PaintingsList/PaintingsList";
 import { useAppDispatch } from "../../store/hooks";
