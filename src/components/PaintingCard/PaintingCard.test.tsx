@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import customRender from "../../testUtils/customRender";
-import paintingsMock from "../../testUtils/paintingsMock";
+import paintingsMock from "../../mocks/paintingsMock";
 import PaintingCard from "./PaintingCard";
 
 describe("Given a PaintingCard component", () => {
