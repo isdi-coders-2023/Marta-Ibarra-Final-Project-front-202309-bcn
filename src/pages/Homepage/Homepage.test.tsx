@@ -15,7 +15,7 @@ describe("Given a Homepage component", () => {
         name: expectedTitle,
       });
 
-      expect(homepageTitle).toBeInTheDocument;
+      expect(homepageTitle).toBeInTheDocument();
     });
   });
 });
