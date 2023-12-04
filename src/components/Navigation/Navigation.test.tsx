@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Navigation from "./Navigation";
-import customRender from "../../testUtils/customRender";
+import { customRender } from "../../testUtils/customRender";
 import paintingsMock from "../../mocks/paintingsMock";
 
 describe("Given a Navigation component", () => {

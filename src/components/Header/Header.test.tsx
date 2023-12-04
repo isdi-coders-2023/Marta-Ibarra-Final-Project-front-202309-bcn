@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Header from "./Header";
-import customRender from "../../testUtils/customRender";
+import { customRender } from "../../testUtils/customRender";
 import paintingsMock from "../../mocks/paintingsMock";
 
 describe("Given a header component", () => {
