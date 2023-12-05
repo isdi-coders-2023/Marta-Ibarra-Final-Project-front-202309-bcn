@@ -25,7 +25,7 @@ const usePaintingsApi = () => {
   }, [dispatch]);
 
   const deletePainting = useCallback(
-    async (paintingId: string) => {
+    async (paintingId: string): Promise<void> => {
       dispatch(showLoadingActionCreator());
 
       const { data } = await axios.delete(`/paintings/${paintingId}`);
