@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import HomepageStyled from "./HomepageStyled";
-import { loadPaintingsActionCreator } from "../../store/paintings/paintingsSlice";
+import { loadPaintingsActionCreator } from "../../store/paintings/features/paintings/paintingsSlice";
 import PaintingsList from "../../components/PaintingsList/PaintingsList";
 import { useAppDispatch } from "../../store/hooks";
 import usePaintingsApi from "../../hooks/usePaintingsApi";
