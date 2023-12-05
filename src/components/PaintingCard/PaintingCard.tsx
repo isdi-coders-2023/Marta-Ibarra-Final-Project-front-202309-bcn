@@ -1,4 +1,8 @@
-import { PaintingStructure } from "../../store/types";
+import usePaintingsApi from "../../hooks/usePaintingsApi";
+import { useAppDispatch } from "../../store/hooks";
+import { deletePaintingActionCreator } from "../../store/paintings/features/paintings/paintingsSlice";
+import { PaintingStructure } from "../../store/paintings/features/paintings/types";
+import Button from "../Button/Button";
 import PaintingCardStyled from "./PaintingCardStyled";
 
 interface PaintingCardProps {
@@ -6,8 +10,16 @@ interface PaintingCardProps {
 }
 
 const PaintingCard = ({
-  painting: { image, name, title, year },
+  painting: { image, name, title, year, _id },
 }: PaintingCardProps): React.ReactElement => {
+  const dispatch = useAppDispatch();
+  const { deletePainting } = usePaintingsApi();
+
+  const deletePaintingById = async (paintingId: string) => {
+    await deletePainting(paintingId);
+    dispatch(deletePaintingActionCreator(paintingId));
+  };
+
   return (
     <PaintingCardStyled className="card">
       <h2 className="card__painter">{name}</h2>
@@ -21,6 +33,16 @@ const PaintingCard = ({
       <span className="card__info">
         {title}, {year}
       </span>
+      <div className="card__button-container">
+        <Button text={"Edit info"} size={"button__small"} />
+        <Button
+          text={"Delete"}
+          size={"button__small"}
+          actionOnClick={() => {
+            deletePaintingById(_id);
+          }}
+        />
+      </div>
     </PaintingCardStyled>
   );
 };
