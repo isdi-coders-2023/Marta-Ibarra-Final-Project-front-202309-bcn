@@ -1,4 +1,4 @@
-import { PaintingStructure } from "../store/types";
+import { PaintingStructure } from "../store/paintings/features/paintings/types";
 
 const paintingsMock: PaintingStructure[] = [
   {
@@ -36,6 +36,16 @@ const paintingsMock: PaintingStructure[] = [
     price: 7000,
     title: "Stuck on you",
     year: 2021,
+  },
+  {
+    _id: "6564d129ab6e912be5400b1f",
+    image: "",
+    name: "Jean Michel Basquiat",
+    price: 10000000,
+    title: "Sugar Ray Robinson",
+    year: 1982,
+    authorInfo: "",
+    imageDescription: "",
   },
 ];
 

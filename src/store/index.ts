@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { paintingsReducer } from "./paintings/paintingsSlice";
+import { paintingsReducer } from "./paintings/features/paintings/paintingsSlice";
 import { uiReducer } from "./paintings/features/ui/uiSlice";
 
 export const store = configureStore({
