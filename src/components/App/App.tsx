@@ -10,8 +10,8 @@ const App = (): React.ReactElement => {
 
   return (
     <AppStyled>
-      {uiState.isLoading && <Loading />}
       <Header />
+      {uiState.isLoading && <Loading />}
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Homepage />} />
