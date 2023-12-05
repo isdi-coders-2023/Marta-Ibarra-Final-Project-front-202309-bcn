@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { PaintingStructure, PaintingsStateStructure } from "../types";
+import { PaintingStructure, PaintingsStateStructure } from "./types";
 
 const initialPaintingsState: PaintingsStateStructure = {
   paintings: [],
@@ -16,10 +16,18 @@ const paintingsSlice = createSlice({
       ...currentState,
       paintings: action.payload,
     }),
+    deletePainting: (currentstate, action: PayloadAction<string>) => ({
+      ...currentstate,
+      paintings: currentstate.paintings.filter(
+        (painting) => painting._id !== action.payload,
+      ),
+    }),
   },
 });
 
-export const { loadPaintings: loadPaintingsActionCreator } =
-  paintingsSlice.actions;
+export const {
+  loadPaintings: loadPaintingsActionCreator,
+  deletePainting: deletePaintingActionCreator,
+} = paintingsSlice.actions;
 
 export const paintingsReducer = paintingsSlice.reducer;

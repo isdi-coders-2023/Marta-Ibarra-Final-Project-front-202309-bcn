@@ -19,4 +19,21 @@ describe("Given a usePaintingsApi custom hook", () => {
       expect(currentPaintings).toStrictEqual(expectedPaintings);
     });
   });
+
+  describe("When it calls its deletePainting method with a painting id '6564d129ab6e912be5400b1f' ", () => {
+    test("Then it should delete the painting 'Sugar Ray Robinson'", async () => {
+      const expectedDeletedPaintingId = paintingsMock[3]._id;
+      const expectedResponse = {};
+
+      const {
+        result: {
+          current: { deletePainting },
+        },
+      } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
+
+      const response = await deletePainting(expectedDeletedPaintingId);
+
+      expect(response).toStrictEqual(expectedResponse);
+    });
+  });
 });

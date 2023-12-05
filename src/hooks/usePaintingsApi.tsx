@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback } from "react";
-import { PaintingStructure } from "../store/types";
+import { PaintingStructure } from "../store/paintings/features/paintings/types";
 import { useAppDispatch } from "../store/hooks";
 import {
   hideLoadingActionCreator,
@@ -24,7 +24,20 @@ const usePaintingsApi = () => {
     return paintings;
   }, [dispatch]);
 
-  return { getPaintingsApi };
+  const deletePainting = useCallback(
+    async (paintingId: string) => {
+      dispatch(showLoadingActionCreator());
+
+      const { data } = await axios.delete(`/paintings/${paintingId}`);
+
+      dispatch(hideLoadingActionCreator());
+
+      return data;
+    },
+    [dispatch],
+  );
+
+  return { getPaintingsApi, deletePainting };
 };
 
 export default usePaintingsApi;

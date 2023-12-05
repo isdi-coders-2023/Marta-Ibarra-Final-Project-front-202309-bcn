@@ -6,11 +6,11 @@ import React, { PropsWithChildren } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../styles/GlobalStyle";
 import mainTheme from "../styles/mainTheme";
-import { PaintingStructure } from "../store/types";
-import { paintingsReducer } from "../store/paintings/paintingsSlice";
 import { uiReducer } from "../store/paintings/features/ui/uiSlice";
 import paintingsMock from "../mocks/paintingsMock";
 import { store } from "../store";
+import { paintingsReducer } from "../store/paintings/features/paintings/paintingsSlice";
+import { PaintingStructure } from "../store/paintings/features/paintings/types";
 
 export const customRender = (
   children: React.ReactElement,
