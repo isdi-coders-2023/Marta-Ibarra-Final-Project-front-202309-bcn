@@ -1,8 +1,10 @@
-import { screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { customRender } from "../../testUtils/customRender";
 import paintingsMock from "../../mocks/paintingsMock";
 import PaintingCard from "./PaintingCard";
+import { errorHandlers } from "../../mocks/handlers";
+import server from "../../mocks/node";
 
 describe("Given a PaintingCard component", () => {
   describe("When it receives Lou Dapper's information", () => {
@@ -26,7 +28,7 @@ describe("Given a PaintingCard component", () => {
       expect(button).toBeInTheDocument();
     });
 
-    test("Thwn it should show a button with the text 'edit info'", () => {
+    test("Then it should show a button with the text 'edit info'", () => {
       const expectedButtonText = "Edit info";
 
       customRender(<PaintingCard painting={paintingsMock[1]} />, paintingsMock);
@@ -36,10 +38,10 @@ describe("Given a PaintingCard component", () => {
     });
 
     describe("When it receives a click on the delete button of 'Lou Dapper' card", () => {
-      test("Then it should delete 'Dapper Lou' card", async () => {
-        const expectedButtonText = "Delete";
-        const expectedPainting = "Dapper Lou";
+      const expectedPainting = "Dapper Lou";
+      const expectedButtonText = "Delete";
 
+      test("Then it should delete 'Dapper Lou' card", async () => {
         customRender(
           <PaintingCard painting={paintingsMock[0]} />,
           paintingsMock,
@@ -53,6 +55,45 @@ describe("Given a PaintingCard component", () => {
         waitFor(() => {
           expect(heading).not.toBeInTheDocument();
         });
+      });
+
+      test("Then it should show the message 'The painting was deleted successfully", async () => {
+        customRender(
+          <PaintingCard painting={paintingsMock[0]} />,
+          paintingsMock,
+        );
+
+        const deleteButton = screen.getByRole("button", {
+          name: expectedButtonText,
+        });
+
+        await fireEvent.click(deleteButton);
+
+        waitFor(async () =>
+          expect(
+            screen.getByText("The painting was deleted successfully"),
+          ).toBeInTheDocument(),
+        );
+      });
+
+      test("Then it should show the message 'Something went wrong, please try again'", async () => {
+        server.use(...errorHandlers);
+        customRender(
+          <PaintingCard painting={paintingsMock[1]} />,
+          paintingsMock,
+        );
+
+        const deleteButton = screen.getByRole("button", {
+          name: expectedButtonText,
+        });
+
+        await fireEvent.click(deleteButton);
+
+        waitFor(async () =>
+          expect(
+            screen.getByText("Something went wrong, please try again"),
+          ).toBeInTheDocument(),
+        );
       });
     });
   });

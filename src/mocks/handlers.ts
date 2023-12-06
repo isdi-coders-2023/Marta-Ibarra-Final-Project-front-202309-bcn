@@ -2,7 +2,8 @@ import { http, HttpResponse } from "msw";
 import paintingsMock from "./paintingsMock";
 
 const urlApi = import.meta.env.VITE_API_URL;
-const handler = [
+
+export const handlers = [
   http.get(`${urlApi}/paintings`, () => {
     return HttpResponse.json({ paintings: paintingsMock });
   }),
@@ -11,4 +12,11 @@ const handler = [
   }),
 ];
 
-export default handler;
+export const errorHandlers = [
+  http.get(`${urlApi}/paintings`, async () => {
+    return HttpResponse.error();
+  }),
+  http.delete(`${urlApi}/paintings/:_id`, async () => {
+    return HttpResponse.error();
+  }),
+];
