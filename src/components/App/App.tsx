@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "../Header/Header";
 import AppStyled from "./AppStyled";
@@ -11,6 +13,7 @@ const App = (): React.ReactElement => {
   return (
     <AppStyled>
       <Header />
+      <ToastContainer />
       {uiState.isLoading && <Loading />}
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />

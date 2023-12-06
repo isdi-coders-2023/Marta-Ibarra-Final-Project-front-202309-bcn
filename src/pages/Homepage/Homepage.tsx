@@ -11,9 +11,11 @@ const Homepage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      const { paintings } = await getPaintingsApi();
+      const paintings = await getPaintingsApi();
 
-      dispatch(loadPaintingsActionCreator(paintings));
+      if (paintings) {
+        dispatch(loadPaintingsActionCreator(paintings.paintings));
+      }
     })();
   }, [dispatch, getPaintingsApi]);
 

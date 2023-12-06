@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import axios from "axios";
 import { useCallback } from "react";
 import { PaintingStructure } from "../store/paintings/features/paintings/types";
@@ -13,26 +14,46 @@ const usePaintingsApi = () => {
   const dispatch = useAppDispatch();
 
   const getPaintingsApi = useCallback(async () => {
-    dispatch(showLoadingActionCreator());
+    try {
+      dispatch(showLoadingActionCreator());
 
-    const { data: paintings } = await axios.get<{
-      paintings: PaintingStructure[];
-    }>("/paintings");
+      const { data: paintings } = await axios.get<{
+        paintings: PaintingStructure[];
+      }>("/paintings");
 
-    dispatch(hideLoadingActionCreator());
+      dispatch(hideLoadingActionCreator());
 
-    return paintings;
+      return paintings;
+    } catch {
+      dispatch(hideLoadingActionCreator());
+
+      toast.error("Something went wrong, please try again", {
+        position: toast.POSITION.TOP_RIGHT,
+        className: "toast toast--error",
+      });
+    }
   }, [dispatch]);
 
   const deletePainting = useCallback(
     async (paintingId: string): Promise<void> => {
       dispatch(showLoadingActionCreator());
 
-      const { data } = await axios.delete(`/paintings/${paintingId}`);
+      try {
+        const { data } = await axios.delete(`/paintings/${paintingId}`);
+        dispatch(hideLoadingActionCreator());
+        toast.success("Painting deleted successfully", {
+          position: toast.POSITION.TOP_RIGHT,
+          className: "toast toast--confirmation",
+        });
 
-      dispatch(hideLoadingActionCreator());
-
-      return data;
+        return data;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+        toast.error("Something went wrong, please try again", {
+          position: toast.POSITION.TOP_RIGHT,
+          className: "toast toast--error",
+        });
+      }
     },
     [dispatch],
   );
