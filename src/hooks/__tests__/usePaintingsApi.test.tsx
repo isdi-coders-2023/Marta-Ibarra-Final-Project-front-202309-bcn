@@ -20,7 +20,7 @@ describe("Given a usePaintingsApi custom hook", () => {
     });
   });
 
-  describe("When it calls its deletePainting method with a painting id '6564d129ab6e912be5400b1f' ", () => {
+  describe("When it calls its deletePainting function with a painting id '6564d129ab6e912be5400b1f' ", () => {
     test("Then it should delete the painting 'Sugar Ray Robinson'", async () => {
       const expectedDeletedPaintingId = paintingsMock[3]._id;
       const expectedResponse = {};
