@@ -8,7 +8,9 @@ const Navigation = (): React.ReactElement => {
         <li>
           <NavLink to="/home">Home</NavLink>
         </li>
-        <li>Add</li>
+        <li>
+          <NavLink to="/add">Add</NavLink>
+        </li>
       </ul>
     </NavigationStyled>
   );
