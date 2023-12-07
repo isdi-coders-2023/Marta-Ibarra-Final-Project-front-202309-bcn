@@ -3,6 +3,8 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps {
   text: string;
   size: "button__big" | "button__small";
+  type: "submit" | "button";
+  className: string;
   actionOnClick?: () => void;
 }
 
