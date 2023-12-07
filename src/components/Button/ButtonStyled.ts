@@ -23,11 +23,13 @@ const ButtonStyled = styled.div`
     &__big {
       width: 110px;
       height: 73px;
-      top: -631px;
-      left: 751px;
       border-radius: 20px;
       border: 1px;
       margin: 5px;
+    }
+
+    :disabled {
+      font-weight: 500;
     }
   }
 `;

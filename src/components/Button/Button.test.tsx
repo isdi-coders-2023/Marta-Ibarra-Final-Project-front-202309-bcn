@@ -9,7 +9,12 @@ describe("Given a Button component", () => {
       const text = "Edit info";
 
       customRender(
-        <Button text={"Edit info"} size={"button__small"} />,
+        <Button
+          text={"Edit info"}
+          size={"button__small"}
+          type={"button"}
+          className={""}
+        />,
         paintingsMock,
       );
       const button = screen.getByRole("button", { name: text });
