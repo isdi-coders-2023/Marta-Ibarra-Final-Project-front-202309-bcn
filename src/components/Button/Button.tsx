@@ -11,11 +11,14 @@ interface ButtonProps {
 const Button = ({
   text,
   size,
+  type,
   actionOnClick,
 }: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled onClick={actionOnClick}>
-      <button className={`button ${size}`}>{text}</button>
+      <button className={`button ${size}`} type={type}>
+        {text}
+      </button>
     </ButtonStyled>
   );
 };

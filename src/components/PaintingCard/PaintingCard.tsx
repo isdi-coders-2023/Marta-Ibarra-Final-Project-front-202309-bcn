@@ -34,13 +34,20 @@ const PaintingCard = ({
         {title}, {year}
       </span>
       <div className="card__button-container">
-        <Button text={"Edit info"} size={"button__small"} />
+        <Button
+          text={"Edit info"}
+          size={"button__small"}
+          type={"button"}
+          className={"card__button"}
+        />
         <Button
           text={"Delete"}
           size={"button__small"}
           actionOnClick={() => {
             deletePaintingById(_id);
           }}
+          type={"button"}
+          className={"card__button"}
         />
       </div>
     </PaintingCardStyled>
