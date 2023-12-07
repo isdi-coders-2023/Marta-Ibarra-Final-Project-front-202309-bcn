@@ -6,6 +6,7 @@ import AppStyled from "./AppStyled";
 import Homepage from "../../pages/Homepage/Homepage";
 import { useAppSelector } from "../../store/hooks";
 import Loading from "../Loading/Loading";
+import AddPage from "../../pages/AddPage/AddPage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -18,6 +19,7 @@ const App = (): React.ReactElement => {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Homepage />} />
+        <Route path="/add" element={<AddPage />} />
       </Routes>
     </AppStyled>
   );
