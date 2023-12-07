@@ -1,11 +1,7 @@
 import styled from "styled-components";
 
-const HomepageStyled = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .section-title {
+const AddPageStyled = styled.main`
+  .page-title {
     font-family: Inter;
     font-size: 20px;
     font-style: italic;
@@ -16,4 +12,4 @@ const HomepageStyled = styled.main`
   }
 `;
 
-export default HomepageStyled;
+export default AddPageStyled;
