@@ -1,7 +1,10 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useCallback } from "react";
-import { PaintingStructure } from "../store/paintings/features/paintings/types";
+import {
+  PaintingStructure,
+  PaintingWithoutId,
+} from "../store/paintings/features/paintings/types";
 import { useAppDispatch } from "../store/hooks";
 import {
   hideLoadingActionCreator,
@@ -57,8 +60,37 @@ const usePaintingsApi = () => {
     },
     [dispatch],
   );
+  const addnewPainting = useCallback(
+    async (
+      newPainting: PaintingWithoutId,
+    ): Promise<PaintingStructure | undefined> => {
+      dispatch(showLoadingActionCreator());
 
-  return { getPaintingsApi, deletePainting };
+      try {
+        const {
+          data: { painting },
+        } = await axios.post<{ painting: PaintingStructure }>(
+          "/paintings/add",
+          newPainting,
+        );
+
+        dispatch(hideLoadingActionCreator());
+
+        toast.success("Your artwork has been added successfully", {
+          className: "toast toast--confirmation",
+        });
+
+        return painting;
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("An error occurred, please try again");
+      }
+    },
+    [dispatch],
+  );
+
+  return { getPaintingsApi, deletePainting, addnewPainting };
 };
 
 export default usePaintingsApi;

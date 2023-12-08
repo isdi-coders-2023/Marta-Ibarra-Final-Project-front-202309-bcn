@@ -10,19 +10,16 @@ import mainTheme from "../styles/mainTheme";
 import { uiReducer } from "../store/paintings/features/ui/uiSlice";
 import { store } from "../store";
 import { paintingsReducer } from "../store/paintings/features/paintings/paintingsSlice";
-import { PaintingStructure } from "../store/paintings/features/paintings/types";
+import { paintingsMock } from "../mocks/paintingsMock";
 
-export const customRender = (
-  children: React.ReactElement,
-  mockData: PaintingStructure[],
-) => {
+export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
     reducer: {
       paintingsState: paintingsReducer,
       uiState: uiReducer,
     },
     preloadedState: {
-      paintingsState: { paintings: mockData },
+      paintingsState: { paintings: paintingsMock },
       uiState: { isLoading: false },
     },
   });

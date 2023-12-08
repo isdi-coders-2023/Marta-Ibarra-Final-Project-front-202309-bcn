@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-import paintingsMock from "../../mocks/paintingsMock";
 import { customRender } from "../../testUtils/customRender";
 import AddPage from "./AddPage";
 
@@ -9,7 +8,7 @@ describe("Given an AddPage component", () => {
 
     const expectedTitle = "Add a new Artwork";
 
-    customRender(<AddPage />, paintingsMock);
+    customRender(<AddPage />);
 
     const addPagetitle = screen.getByRole("heading", { name: expectedTitle });
 

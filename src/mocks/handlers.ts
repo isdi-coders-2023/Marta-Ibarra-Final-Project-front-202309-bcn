@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-import paintingsMock from "./paintingsMock";
+import { paintingsMock } from "./paintingsMock";
 
 const urlApi = import.meta.env.VITE_API_URL;
 
@@ -9,6 +9,9 @@ export const handlers = [
   }),
   http.delete(`${urlApi}/paintings/:_id`, () => {
     return HttpResponse.json({});
+  }),
+  http.post(`${urlApi}/paintings/add`, () => {
+    return HttpResponse.json({ painting: paintingsMock });
   }),
 ];
 

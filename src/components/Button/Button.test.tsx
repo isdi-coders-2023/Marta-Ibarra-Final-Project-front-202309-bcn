@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import { customRender } from "../../testUtils/customRender";
-import paintingsMock from "../../mocks/paintingsMock";
 import Button from "./Button";
 
 describe("Given a Button component", () => {
@@ -11,11 +10,9 @@ describe("Given a Button component", () => {
       customRender(
         <Button
           text={"Edit info"}
-          size={"button__small"}
+          className={"button__small"}
           type={"button"}
-          className={""}
         />,
-        paintingsMock,
       );
       const button = screen.getByRole("button", { name: text });
 

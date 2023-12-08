@@ -16,11 +16,20 @@ const paintingsSlice = createSlice({
       ...currentState,
       paintings: action.payload,
     }),
+
     deletePainting: (currentstate, action: PayloadAction<string>) => ({
       ...currentstate,
       paintings: currentstate.paintings.filter(
         (painting) => painting._id !== action.payload,
       ),
+    }),
+
+    addNewPainting: (
+      currentState,
+      action: PayloadAction<PaintingStructure>,
+    ): PaintingsStateStructure => ({
+      ...currentState,
+      paintings: [...currentState.paintings, action.payload],
     }),
   },
 });
@@ -28,6 +37,7 @@ const paintingsSlice = createSlice({
 export const {
   loadPaintings: loadPaintingsActionCreator,
   deletePainting: deletePaintingActionCreator,
+  addNewPainting: addNewPaintingActionCreator,
 } = paintingsSlice.actions;
 
 export const paintingsReducer = paintingsSlice.reducer;

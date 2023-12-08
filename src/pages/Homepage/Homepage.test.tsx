@@ -1,6 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
 import { customRender } from "../../testUtils/customRender";
-import paintingsMock from "../../mocks/paintingsMock";
 import Homepage from "./Homepage";
 import { errorHandlers } from "../../mocks/handlers";
 import server from "../../mocks/node";
@@ -9,9 +8,8 @@ describe("Given a Homepage component", () => {
   describe("When it is rendered", () => {
     test("Then it should show 'Homepage'", () => {
       const expectedTitle = "Homepage";
-      const mockData = paintingsMock;
 
-      customRender(<Homepage />, mockData);
+      customRender(<Homepage />);
 
       const homepageTitle = screen.getByRole("heading", {
         name: expectedTitle,
@@ -26,7 +24,7 @@ describe("Given a Homepage component", () => {
       const errorMessage = "Something went wrong, please try again";
 
       server.use(...errorHandlers);
-      customRender(<Homepage />, paintingsMock);
+      customRender(<Homepage />);
 
       await waitFor(() => {
         expect(screen.getByText(errorMessage)).toBeInTheDocument();

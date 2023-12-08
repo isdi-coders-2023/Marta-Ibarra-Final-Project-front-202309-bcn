@@ -7,7 +7,6 @@ const AddPageStyled = styled.main`
     font-style: italic;
     font-weight: 200;
     line-height: 24px;
-    letter-spacing: 0em;
     text-align: center;
     padding: 10px;
   }
