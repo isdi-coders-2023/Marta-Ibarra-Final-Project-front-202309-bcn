@@ -36,18 +36,16 @@ const PaintingCard = ({
       <div className="card__button-container">
         <Button
           text={"Edit info"}
-          size={"button__small"}
+          className={"button__small"}
           type={"button"}
-          className={"card__button"}
         />
         <Button
           text={"Delete"}
-          size={"button__small"}
           actionOnClick={() => {
             deletePaintingById(_id);
           }}
           type={"button"}
-          className={"card__button"}
+          className={"button__small"}
         />
       </div>
     </PaintingCardStyled>

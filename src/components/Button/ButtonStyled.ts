@@ -1,15 +1,8 @@
 import styled from "styled-components";
 
-const ButtonStyled = styled.div`
+const ButtonStyled = styled.button`
   border-radius: 20px;
   border: solid 0.5px;
-  border-color: #000;
-  font-family: Inter;
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 200;
-  line-height: 24px;
-  text-align: center;
 
   .button {
     &__small {
@@ -20,17 +13,17 @@ const ButtonStyled = styled.div`
       padding: 5px;
     }
 
-    &__big {
-      width: 110px;
-      height: 73px;
-      border-radius: 20px;
-      border: 1px;
-      margin: 5px;
-    }
-
-    :disabled {
+    &:disabled {
       font-weight: 500;
     }
+  }
+
+  .button__big {
+    width: 110px;
+    height: 73px;
+    border-radius: 20px;
+    border: 1px;
+    margin: 5px;
   }
 `;
 

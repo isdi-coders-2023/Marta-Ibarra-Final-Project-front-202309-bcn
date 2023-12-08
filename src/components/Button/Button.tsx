@@ -2,23 +2,24 @@ import ButtonStyled from "./ButtonStyled";
 
 interface ButtonProps {
   text: string;
-  size: "button__big" | "button__small";
+  className: "button__big" | "button__small";
   type: "submit" | "button";
-  className: string;
   actionOnClick?: () => void;
 }
 
 const Button = ({
   text,
-  size,
+  className,
   type,
   actionOnClick,
 }: ButtonProps): React.ReactElement => {
   return (
-    <ButtonStyled onClick={actionOnClick}>
-      <button className={`button ${size}`} type={type}>
-        {text}
-      </button>
+    <ButtonStyled
+      onClick={actionOnClick}
+      className={`button ${className}`}
+      type={type}
+    >
+      {text}
     </ButtonStyled>
   );
 };
