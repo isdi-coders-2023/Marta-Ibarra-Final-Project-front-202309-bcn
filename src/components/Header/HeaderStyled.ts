@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 const HeaderStyled = styled.header`
-  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .header-title {
+    padding: 40px 0 25px 0;
     color: #000;
     font-family: Inter;
     font-size: 32px;
@@ -12,7 +16,6 @@ const HeaderStyled = styled.header`
     line-height: normal;
     text-decoration-line: underline;
     text-align: center;
-    padding: 20px;
   }
 `;
 

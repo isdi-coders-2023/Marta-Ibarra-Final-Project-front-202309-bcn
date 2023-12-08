@@ -73,7 +73,7 @@ const usePaintingsApi = () => {
           "/paintings/add",
           newPainting,
         );
-        debugger;
+
         dispatch(hideLoadingActionCreator());
 
         toast.success("Your artwork has been added successfully", {
