@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import { customRender } from "../../testUtils/customRender";
-import paintingsMock from "../../mocks/paintingsMock";
+import { paintingsMock } from "../../mocks/paintingsMock";
 import Homepage from "./Homepage";
 import { errorHandlers } from "../../mocks/handlers";
 import server from "../../mocks/node";

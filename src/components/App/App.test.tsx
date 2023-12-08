@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import paintingsMock from "../../mocks/paintingsMock";
+import { paintingsMock } from "../../mocks/paintingsMock";
 import { customRender } from "../../testUtils/customRender";
 
 describe("Given an App component", () => {

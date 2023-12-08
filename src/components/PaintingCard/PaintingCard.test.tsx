@@ -1,7 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { customRender } from "../../testUtils/customRender";
-import paintingsMock from "../../mocks/paintingsMock";
+import { paintingsMock } from "../../mocks/paintingsMock";
 import PaintingCard from "./PaintingCard";
 import { errorHandlers } from "../../mocks/handlers";
 import server from "../../mocks/node";
@@ -22,8 +22,8 @@ describe("Given a PaintingCard component", () => {
     test("Then it should show a button with the text 'delete'", () => {
       const expectedButtonText = "Delete";
 
-      customRender(<PaintingCard painting={paintingsMock[2]} />, paintingsMock);
-      const button = screen.getByText(expectedButtonText);
+      customRender(<PaintingCard painting={paintingsMock[1]} />, paintingsMock);
+      const button = screen.getByRole("button", { name: expectedButtonText });
 
       expect(button).toBeInTheDocument();
     });

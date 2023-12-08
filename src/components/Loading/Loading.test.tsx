@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { customRender } from "../../testUtils/customRender";
 import Loading from "./Loading";
-import paintingsMock from "../../mocks/paintingsMock";
+import { paintingsMock } from "../../mocks/paintingsMock";
 
 describe("Given a loading component", () => {
   describe("When it receives an image with the alt property 'loading page'", () => {

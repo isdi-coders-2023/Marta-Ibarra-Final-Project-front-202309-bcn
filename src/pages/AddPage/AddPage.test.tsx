@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import paintingsMock from "../../mocks/paintingsMock";
+import { paintingsMock } from "../../mocks/paintingsMock";
 import { customRender } from "../../testUtils/customRender";
 import AddPage from "./AddPage";
 
