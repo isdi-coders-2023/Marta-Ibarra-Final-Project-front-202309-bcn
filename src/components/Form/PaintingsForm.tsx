@@ -1,20 +1,71 @@
+import { useEffect, useState } from "react";
+import {
+  PaintingStructure,
+  PaintingWithoutId,
+} from "../../store/paintings/features/paintings/types";
 import Button from "../Button/Button";
 import PaintingsFormStyled from "./PaintingsFormStyled";
 
-const PaintingsForm = (): React.ReactElement => {
+interface PaintingFormProps {
+  submitAction: (newPainting: PaintingStructure) => void;
+}
+
+const PaintingsForm = ({
+  submitAction,
+}: PaintingFormProps): React.ReactElement => {
+  const blankPainting: PaintingWithoutId = {
+    authorInfo: "",
+    image: "",
+    imageDescription: "",
+    name: "",
+    price: 0,
+    title: "",
+    year: 0,
+  };
+
+  const [newPainting, setNewPainting] =
+    useState<PaintingWithoutId>(blankPainting);
+
+  const onChangeEditPainting = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setNewPainting((currentNewPainting) => ({
+      ...currentNewPainting,
+      [event.target.id]: event.target.value,
+    }));
+  };
+
+  useEffect(() => {
+    const newPaintingValues = Object.values(newPainting);
+
+    newPaintingValues.every((value) => value !== "");
+  }, [newPainting]);
+
+  const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitAction(newPainting as PaintingStructure);
+  };
+
   return (
-    <PaintingsFormStyled className="form">
-      <div>
-        <label className="form__label" htmlFor="name">
-          Artist
-        </label>
-        <input className="form__input" type="text" id="name" required />
-      </div>
+    <PaintingsFormStyled
+      onSubmit={onFormSubmit}
+      className="form"
+      autoComplete="off"
+    >
       <div>
         <label className="form__label" htmlFor="name">
           Select an artist
         </label>
-        <select className="dropdown" name="artist" id="name">
+        <select
+          className="dropdown"
+          name="artist"
+          id="name"
+          onChange={onChangeEditPainting}
+          required
+        >
           <option value="lou">Dapper Lou</option>
           <option value="armand">Jamel Armand</option>
           <option value="bowling">Frank Bowling</option>
@@ -30,44 +81,73 @@ const PaintingsForm = (): React.ReactElement => {
         <label className="form__label" htmlFor="title">
           Title
         </label>
-        <input className="form__input" type="text" id="title" required />
+        <input
+          className="form__input"
+          type="text"
+          id="title"
+          onChange={onChangeEditPainting}
+          required
+        />
       </div>
       <div>
         <label className="form__label" htmlFor="year">
           Year
         </label>
-        <input className="form__input" type="number" id="year" required />
+        <input
+          className="form__input"
+          type="number"
+          id="year"
+          onChange={onChangeEditPainting}
+          required
+        />
       </div>
       <div>
         <label className="form__label" htmlFor="price">
           Price in €
         </label>
-        <input className="form__input" type="number" id="price" required />
+        <input
+          className="form__input"
+          type="number"
+          id="price"
+          onChange={onChangeEditPainting}
+          required
+        />
       </div>
       <div>
         <label className="form__label" htmlFor="image">
           Image URL
         </label>
-        <input className="form__input" type="url" id="image" required />
+        <input
+          className="form__input"
+          type="url"
+          id="image"
+          onChange={onChangeEditPainting}
+          required
+        />
       </div>
       <div>
-        <label className="form__label" htmlFor="description">
+        <label className="form__label" htmlFor="image-description">
           Image description
         </label>
-        <textarea className="form__input" id="description"></textarea>
+        <textarea
+          className="form__input"
+          id="image-description"
+          onChange={onChangeEditPainting}
+          required
+        />
       </div>
       <div>
-        <label className="form__label" htmlFor="about">
+        <label className="form__label" htmlFor="artist-description">
           About the author
         </label>
-        <textarea className="form__input" id="description"></textarea>
+        <textarea
+          className="form__input"
+          id="artist-description"
+          onChange={onChangeEditPainting}
+          required
+        />
       </div>
-      <Button
-        text={"Add"}
-        size={"button__big"}
-        type={"submit"}
-        className={"form__button"}
-      />
+      <Button text={"Add"} className={"button__big"} type={"submit"} />
     </PaintingsFormStyled>
   );
 };
