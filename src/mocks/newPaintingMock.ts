@@ -49,6 +49,18 @@ const paintingsMock: PaintingStructure[] = [
     imageDescription:
       "Sugar Ray Robinson is one of the true icons from the sport of boxing and can be considered one of the heroes of a young Jean-Michel Basquiat. The artist respected most prominent African-Americans within the fields of sport and music and in this example chose to produce a Neo-Expressionist portrait of him.",
   },
+  {
+    _id: "6564d129ab6e912be540dhjkdii",
+    image: "https://i.ibb.co/VmNHd2K/sugar-ray-robinson-1.webp",
+    name: "Nina Chanel",
+    price: 2500,
+    title: "The Don Killuminati",
+    year: 2020,
+    authorInfo:
+      "Considered to be one of the most influential African-American artists of the  twenty-first century.",
+    imageDescription:
+      "The Don Killuminati is one of the true icons from the sport of boxing and can be considered one of the heroes of a young Jean-Michel Basquiat. The artist respected most prominent African-Americans within the fields of sport and music and in this example chose to produce a Neo-Expressionist portrait of him.",
+  },
 ];
 
 export default paintingsMock;
