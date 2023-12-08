@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import { customRender } from "../../testUtils/customRender";
-import { paintingsMock } from "../../mocks/paintingsMock";
 import PaintingsList from "./PaintingsList";
 
 describe("Given a paintingList component", () => {
@@ -8,7 +7,7 @@ describe("Given a paintingList component", () => {
     test("Then it should show a list with 'Dapper Lou' ", () => {
       const expectedPaintier = "Dapper Lou";
 
-      customRender(<PaintingsList />, paintingsMock);
+      customRender(<PaintingsList />);
       const paintingTitle = screen.getByRole("heading", {
         name: expectedPaintier,
       });
@@ -19,7 +18,7 @@ describe("Given a paintingList component", () => {
     test("Then it should show 'Boys who swim'", () => {
       const expectedAltText = "Boys who swim";
 
-      customRender(<PaintingsList />, paintingsMock);
+      customRender(<PaintingsList />);
       const painting = screen.getByRole("img", { name: expectedAltText });
 
       expect(painting).toBeInTheDocument();

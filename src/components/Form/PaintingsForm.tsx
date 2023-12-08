@@ -14,13 +14,13 @@ const PaintingsForm = ({
   submitAction,
 }: PaintingFormProps): React.ReactElement => {
   const blankPainting: PaintingWithoutId = {
-    authorInfo: "",
-    image: "",
-    imageDescription: "",
     name: "",
-    price: 0,
+    image: "",
     title: "",
     year: 0,
+    imageDescription: "",
+    price: 0,
+    authorInfo: "",
   };
 
   const [newPainting, setNewPainting] =
@@ -126,23 +126,23 @@ const PaintingsForm = ({
         />
       </div>
       <div>
-        <label className="form__label" htmlFor="image-description">
+        <label className="form__label" htmlFor="imageDescription">
           Image description
         </label>
         <textarea
           className="form__input"
-          id="image-description"
+          id="imageDescription"
           onChange={onChangeEditPainting}
           required
         />
       </div>
       <div>
-        <label className="form__label" htmlFor="artist-description">
+        <label className="form__label" htmlFor="authorInfo">
           About the author
         </label>
         <textarea
           className="form__input"
-          id="artist-description"
+          id="authorInfo"
           onChange={onChangeEditPainting}
           required
         />

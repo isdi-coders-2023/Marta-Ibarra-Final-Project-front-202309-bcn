@@ -11,7 +11,7 @@ describe("Given a PaintingCard component", () => {
     test("Then it should show 'Lou Dapper' in a heading", () => {
       const expectedName = paintingsMock[0];
 
-      customRender(<PaintingCard painting={expectedName} />, paintingsMock);
+      customRender(<PaintingCard painting={expectedName} />);
       const painterInfo = screen.getByRole("heading", {
         name: expectedName.name,
       });
@@ -22,7 +22,7 @@ describe("Given a PaintingCard component", () => {
     test("Then it should show a button with the text 'delete'", () => {
       const expectedButtonText = "Delete";
 
-      customRender(<PaintingCard painting={paintingsMock[1]} />, paintingsMock);
+      customRender(<PaintingCard painting={paintingsMock[1]} />);
       const button = screen.getByRole("button", { name: expectedButtonText });
 
       expect(button).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("Given a PaintingCard component", () => {
     test("Then it should show a button with the text 'edit info'", () => {
       const expectedButtonText = "Edit info";
 
-      customRender(<PaintingCard painting={paintingsMock[1]} />, paintingsMock);
+      customRender(<PaintingCard painting={paintingsMock[1]} />);
       const button = screen.getByText(expectedButtonText);
 
       expect(button).toBeInTheDocument();
@@ -42,10 +42,7 @@ describe("Given a PaintingCard component", () => {
       const expectedButtonText = "Delete";
 
       test("Then it should delete 'Dapper Lou' card", async () => {
-        customRender(
-          <PaintingCard painting={paintingsMock[0]} />,
-          paintingsMock,
-        );
+        customRender(<PaintingCard painting={paintingsMock[0]} />);
 
         const button = screen.getByRole("button", { name: expectedButtonText });
         const heading = screen.getByRole("heading", { name: expectedPainting });
@@ -58,10 +55,7 @@ describe("Given a PaintingCard component", () => {
       });
 
       test("Then it should show the message 'The painting was deleted successfully", async () => {
-        customRender(
-          <PaintingCard painting={paintingsMock[0]} />,
-          paintingsMock,
-        );
+        customRender(<PaintingCard painting={paintingsMock[0]} />);
 
         const deleteButton = screen.getByRole("button", {
           name: expectedButtonText,
@@ -78,10 +72,7 @@ describe("Given a PaintingCard component", () => {
 
       test("Then it should show the message 'Something went wrong, please try again'", async () => {
         server.use(...errorHandlers);
-        customRender(
-          <PaintingCard painting={paintingsMock[1]} />,
-          paintingsMock,
-        );
+        customRender(<PaintingCard painting={paintingsMock[1]} />);
 
         const deleteButton = screen.getByRole("button", {
           name: expectedButtonText,

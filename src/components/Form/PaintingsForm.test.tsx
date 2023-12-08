@@ -1,6 +1,5 @@
 import userEvent from "@testing-library/user-event";
 import { screen, waitFor } from "@testing-library/react";
-import { paintingsMock } from "../../mocks/paintingsMock";
 import { customRender } from "../../testUtils/customRender";
 import PaintingsForm from "./PaintingsForm";
 
@@ -11,10 +10,7 @@ describe("Given a PaintingsForm component", () => {
     test("Then it should show an 'Title' label text", () => {
       const expectedLabel = "Title";
 
-      customRender(
-        <PaintingsForm submitAction={actionOnClick} />,
-        paintingsMock,
-      );
+      customRender(<PaintingsForm submitAction={actionOnClick} />);
 
       const labelText = screen.getByLabelText(expectedLabel);
 
@@ -26,10 +22,7 @@ describe("Given a PaintingsForm component", () => {
     test("Then it should show Boys who swim written inside the input field", async () => {
       const expectedInputText = "Boys who swim";
 
-      customRender(
-        <PaintingsForm submitAction={actionOnClick} />,
-        paintingsMock,
-      );
+      customRender(<PaintingsForm submitAction={actionOnClick} />);
 
       const labelText = screen.getByLabelText("Title");
 
@@ -45,10 +38,7 @@ describe("Given a PaintingsForm component", () => {
     test("Then it should show a button with the text 'Add'", () => {
       const expectedButtonText = "Add";
 
-      customRender(
-        <PaintingsForm submitAction={actionOnClick} />,
-        paintingsMock,
-      );
+      customRender(<PaintingsForm submitAction={actionOnClick} />);
       const buttonText = screen.getByText(expectedButtonText);
 
       expect(buttonText).toBeInTheDocument();
