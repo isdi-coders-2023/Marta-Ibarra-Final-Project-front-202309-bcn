@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { customRender } from "../../testUtils/customRender";
 import PaintingsForm from "./PaintingsForm";
 
@@ -30,7 +30,7 @@ describe("Given a PaintingsForm component", () => {
 
       const inputText = screen.getByDisplayValue(expectedInputText);
 
-      await waitFor(() => expect(inputText));
+      expect(inputText).toBeInTheDocument();
     });
   });
 
@@ -42,6 +42,42 @@ describe("Given a PaintingsForm component", () => {
       const buttonText = screen.getByText(expectedButtonText);
 
       expect(buttonText).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user types in the inputs and clicks on the Add button", () => {
+    test("Then it should call its actionOnClick function", async () => {
+      const stringLabelText = [
+        "Select an artist",
+        "Title",
+        "Image URL",
+        "Image description",
+        "About the author",
+      ];
+
+      const stringInput = "https://i.ibb.co/VmNHd2K/sugar-ray-robinson-1.webp";
+      const numberLabelText = ["Year", "Price in €"];
+      const expectedButtonText = "Add";
+      const expectedInputNumber = 2000;
+
+      customRender(<PaintingsForm submitAction={actionOnClick} />);
+
+      for (const labelText of stringLabelText) {
+        const inputElement = screen.getByLabelText(labelText);
+        await userEvent.type(inputElement, stringInput);
+      }
+
+      for (const labelText of numberLabelText) {
+        const inputElement = screen.getByLabelText(labelText);
+        await userEvent.type(inputElement, expectedInputNumber.toString());
+      }
+
+      const addButton = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
+      await userEvent.click(addButton);
+
+      await expect(actionOnClick).toHaveBeenCalled();
     });
   });
 });
