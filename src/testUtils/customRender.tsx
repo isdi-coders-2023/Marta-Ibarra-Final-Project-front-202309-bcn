@@ -38,3 +38,20 @@ export const customRender = (children: React.ReactElement) => {
 export const providerWrapper = ({ children }: PropsWithChildren) => {
   return <Provider store={store}>{children}</Provider>;
 };
+
+export const customRenderWithoutRouter = (children: React.ReactElement) => {
+  const mockStore = configureStore({
+    reducer: { paintingsState: paintingsReducer, uiState: uiReducer },
+    preloadedState: {
+      paintingsState: { paintings: paintingsMock },
+      uiState: { isLoading: false },
+    },
+  });
+
+  render(
+    <ThemeProvider theme={mainTheme}>
+      <GlobalStyle />
+      <Provider store={mockStore}>{children}</Provider>
+    </ThemeProvider>,
+  );
+};

@@ -1,7 +1,16 @@
-import { screen } from "@testing-library/react";
+import { renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import { customRender } from "../../testUtils/customRender";
+import {
+  customRender,
+  customRenderWithoutRouter,
+  providerWrapper,
+} from "../../testUtils/customRender";
+import usePaintingsApi from "../../hooks/usePaintingsApi";
+import { MemoryRouter } from "react-router-dom";
+import { errorHandlers } from "../../mocks/handlers";
+import server from "../../mocks/node";
+import { jamelPaintingMock } from "../../mocks/paintingsMock";
 
 describe("Given an App component", () => {
   describe("When it is rendered", () => {
@@ -31,6 +40,31 @@ describe("Given an App component", () => {
 
       expect(homepageTitle).toBeInTheDocument();
       expect(navLink).toBeInTheDocument();
+    });
+  });
+
+  describe("When it tries to call the addPainting method with the new painting 'Untitled' but an error occurs", () => {
+    test("Then it should show the error message 'An error occurred, please try again'", async () => {
+      server.use(...errorHandlers);
+      const errorMessage = "An error occurred, please try again";
+      const path = "/add";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={[path]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const {
+        result: {
+          current: { addnewPainting },
+        },
+      } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
+
+      await addnewPainting(jamelPaintingMock);
+      const feedback = await screen.findByText(errorMessage);
+
+      expect(feedback).toBeInTheDocument();
     });
   });
 });
