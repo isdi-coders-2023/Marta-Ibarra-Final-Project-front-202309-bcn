@@ -56,9 +56,6 @@ const PaintingsForm = ({
       autoComplete="off"
     >
       <div>
-        <label className="form__label" htmlFor="name">
-          Select an artist
-        </label>
         <select
           className="dropdown"
           name="artist"
@@ -66,6 +63,7 @@ const PaintingsForm = ({
           onChange={onChangeEditPainting}
           required
         >
+          <option value="select">Select an artist</option>
           <option value="lou">Dapper Lou</option>
           <option value="armand">Jamel Armand</option>
           <option value="bowling">Frank Bowling</option>

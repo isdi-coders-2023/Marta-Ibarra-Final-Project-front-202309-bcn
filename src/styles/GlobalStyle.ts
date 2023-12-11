@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
  }
 
  body,
- h1, h2 {
+ h1, h2, h3, h4, p {
   margin: 0;
  }
 
@@ -31,6 +31,13 @@ const GlobalStyle = createGlobalStyle`
   text-decoration: none;
   color: inherit;
  }     
+
+ input,
+ textarea,
+ select {
+  font: inherit;
+  border: none;
+ }
 
  button {
   border: none;

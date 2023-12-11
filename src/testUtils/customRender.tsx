@@ -11,6 +11,7 @@ import { uiReducer } from "../store/paintings/features/ui/uiSlice";
 import { store } from "../store";
 import { paintingsReducer } from "../store/paintings/features/paintings/paintingsSlice";
 import { paintingsMock } from "../mocks/paintingsMock";
+import { PaintingStructure } from "../store/paintings/features/paintings/types";
 
 export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -19,7 +20,10 @@ export const customRender = (children: React.ReactElement) => {
       uiState: uiReducer,
     },
     preloadedState: {
-      paintingsState: { paintings: paintingsMock },
+      paintingsState: {
+        paintings: paintingsMock,
+        selectedPainting: {} as PaintingStructure,
+      },
       uiState: { isLoading: false },
     },
   });
@@ -43,7 +47,10 @@ export const customRenderWithoutRouter = (children: React.ReactElement) => {
   const mockStore = configureStore({
     reducer: { paintingsState: paintingsReducer, uiState: uiReducer },
     preloadedState: {
-      paintingsState: { paintings: paintingsMock },
+      paintingsState: {
+        paintings: paintingsMock,
+        selectedPainting: {} as PaintingStructure,
+      },
       uiState: { isLoading: false },
     },
   });
