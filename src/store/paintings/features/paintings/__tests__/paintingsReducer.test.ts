@@ -1,14 +1,16 @@
 import {
   addedPaintingMock,
+  modifiedPaintingsMock,
   paintingsMock,
-} from "../../../../mocks/paintingsMock";
-import { PaintingStructure, PaintingsStateStructure } from "./types";
+} from "../../../../../mocks/paintingsMock";
+import { PaintingStructure, PaintingsStateStructure } from "../types";
 import {
   addNewPaintingActionCreator,
   deletePaintingActionCreator,
   loadPaintingsActionCreator,
+  modifyPaintingActionCreator,
   paintingsReducer,
-} from "./paintingsSlice";
+} from "../paintingsSlice";
 
 describe("Given a paintingsReducer reducer", () => {
   describe("When it receives a currentState and a list of paintings", () => {
@@ -64,6 +66,27 @@ describe("Given a paintingsReducer reducer", () => {
       );
 
       expect(currentPaintingState.paintings).toStrictEqual(mockAddedList);
+    });
+  });
+
+  describe("When it receives a paintings list, the painting Sugar Ray Robinson and the action modifyPaniting", () => {
+    test("Then it should return the list of paintings with the Sugar Ray Robinson painting modified", () => {
+      const modifiedPaintings = modifiedPaintingsMock;
+      const modifiedPainting = {
+        ...modifiedPaintings[0],
+      };
+
+      const initialState: PaintingsStateStructure = {
+        paintings: modifiedPaintings,
+        selectedPainting: {} as PaintingStructure,
+      };
+
+      const currentPaintingState = paintingsReducer(
+        initialState,
+        modifyPaintingActionCreator(modifiedPainting),
+      );
+
+      expect(currentPaintingState.paintings).toStrictEqual(modifiedPaintings);
     });
   });
 });
