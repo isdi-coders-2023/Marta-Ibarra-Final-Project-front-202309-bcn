@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import usePaintingsApi from "../../hooks/usePaintingsApi";
 import { useAppDispatch } from "../../store/hooks";
 import { deletePaintingActionCreator } from "../../store/paintings/features/paintings/paintingsSlice";
@@ -23,13 +24,15 @@ const PaintingCard = ({
   return (
     <PaintingCardStyled className="card">
       <h2 className="card__painter">{name}</h2>
-      <img
-        className="card__image"
-        src={image}
-        alt={title}
-        width="280"
-        height="345"
-      />
+      <Link to={`/paintings/${_id}`}>
+        <img
+          className="card__image"
+          src={image}
+          alt={title}
+          width="280"
+          height="345"
+        />
+      </Link>
       <span className="card__info">
         {title}, {year}
       </span>
