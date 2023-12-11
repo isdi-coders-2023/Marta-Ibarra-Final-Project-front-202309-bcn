@@ -28,9 +28,19 @@ const PaintingsFormStyled = styled.form`
     padding: 5px;
   }
 
-  .form__button {
+  .button__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .button__big {
     width: 110px;
     height: 73px;
+    border-radius: 20px;
+    margin: 5px;
+    border: solid 0.5px;
   }
 `;
 

@@ -65,9 +65,8 @@ const PaintingsForm = ({
           name="artist"
           id="name"
           onChange={onChangeEditPainting}
-          required
         >
-          <option value="select">Select an artist</option>
+          <option value="">Select an artist</option>
           <option value="lou">Dapper Lou</option>
           <option value="armand">Jamel Armand</option>
           <option value="bowling">Frank Bowling</option>
@@ -149,7 +148,9 @@ const PaintingsForm = ({
           required
         />
       </div>
-      <Button text={"Add"} className={"button__big"} type={"submit"} />
+      <div className="button__container">
+        <Button text={"Add"} className={"button__big"} type={"submit"} />
+      </div>
     </PaintingsFormStyled>
   );
 };
