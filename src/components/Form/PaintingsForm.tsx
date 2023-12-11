@@ -65,7 +65,6 @@ const PaintingsForm = ({
           name="artist"
           id="name"
           onChange={onChangeEditPainting}
-          required
         >
           <option value="">Select an artist</option>
           <option value="lou">Dapper Lou</option>
