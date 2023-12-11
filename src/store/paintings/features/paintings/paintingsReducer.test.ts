@@ -2,7 +2,7 @@ import {
   addedPaintingMock,
   paintingsMock,
 } from "../../../../mocks/paintingsMock";
-import { PaintingsStateStructure } from "./types";
+import { PaintingStructure, PaintingsStateStructure } from "./types";
 import {
   addNewPaintingActionCreator,
   deletePaintingActionCreator,
@@ -15,6 +15,7 @@ describe("Given a paintingsReducer reducer", () => {
     test("Then it should return the new state with 'Boys who swim', 'Untitled' and 'Stuck on you' in a list", () => {
       const currentListState: PaintingsStateStructure = {
         paintings: [],
+        selectedPainting: {} as PaintingStructure,
       };
       const paintingsList = paintingsMock;
 
@@ -31,6 +32,7 @@ describe("Given a paintingsReducer reducer", () => {
     test("Then it should return the list minus the painting with id '6564d123ab6e912be5400b1e'", () => {
       const initialState: PaintingsStateStructure = {
         paintings: paintingsMock,
+        selectedPainting: {} as PaintingStructure,
       };
       const expectedDeletedPainting = "Sugar Ray Robinson";
       const expectedPaintingId = "6564d129ab6e912be5400b1f";
@@ -52,6 +54,7 @@ describe("Given a paintingsReducer reducer", () => {
       const mockAddedList = addedPaintingMock;
       const initialState: PaintingsStateStructure = {
         paintings: mockList,
+        selectedPainting: {} as PaintingStructure,
       };
       const newPainting = mockAddedList[2];
 
