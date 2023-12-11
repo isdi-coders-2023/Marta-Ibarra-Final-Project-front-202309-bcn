@@ -42,6 +42,14 @@ const PaintingCardStyled = styled.article`
     justify-content: space-around;
     padding: 20px;
   }
+
+  .button__small {
+    width: 95px;
+    height: 48px;
+    border-radius: 20px;
+    padding: 5px;
+    border: solid 0.5px;
+  }
 `;
 
 export default PaintingCardStyled;
