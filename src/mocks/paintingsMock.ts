@@ -1,4 +1,7 @@
-import { PaintingStructure } from "../store/paintings/features/paintings/types";
+import {
+  PaintingStructure,
+  PaintingWithoutId,
+} from "../store/paintings/features/paintings/types";
 
 export const louPaintingMock: PaintingStructure = {
   _id: "6564d084ab6e912be5400b16",
@@ -72,3 +75,15 @@ export const addedPaintingMock = [
   jamelPaintingMock,
   asifPaintingMock,
 ];
+
+export const louPaintingMockWithoutId: PaintingWithoutId = {
+  authorInfo:
+    "Brooklyn based, Haitian American photographer and creative director, Lougè Delcy, better known as Dapper Lou. Delcy has traveled much of the African continent documenting indigenous cultures and people. His vibrant visual style, and willingness to dive deep into the exploration of each city has allowed him to make a name for himself as a visual documentarian. Delcy uses his Haitian roots and love of travel as drivers for his creative output and urge to discover and amplify stories that we don't often hear.",
+  image: "https://i.ibb.co/sbf9jRM/Lou-Drapper.webp",
+  imageDescription:
+    "At first I didn't have the mainland as my main goal, but an opportunity arose. My first project in Africa was in Kenya, in a non-profit collaboration. I documented the situation of pregnant women in the country. The idea was to put the spotlight on these women, some of whom suffer and die during childbirth. But it was not only photographing them as victims, but also as heroines, women who fight and raise their children. It was the first time I set foot on the continent and that made me very interested in the cultural diversity in these countries..",
+  name: "Dapper Lou",
+  price: 6000,
+  title: "Boys who swim",
+  year: 2019,
+};

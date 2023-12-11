@@ -11,6 +11,7 @@ export interface PaintingStructure {
 
 export interface PaintingsStateStructure {
   paintings: PaintingStructure[];
+  selectedPainting: PaintingStructure;
 }
 
 export type PaintingWithoutId = Omit<PaintingStructure, "_id">;

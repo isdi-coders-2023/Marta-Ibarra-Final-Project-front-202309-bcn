@@ -8,6 +8,7 @@ const PaintingCardStyled = styled.article`
   margin: 20px;
   margin-top: 20px;
   box-shadow: #ededed 0px 0px 10px;
+  overflow-wrap: anywhere;
 
   .card__painter {
     font-family: Inter;
@@ -31,6 +32,8 @@ const PaintingCardStyled = styled.article`
 
   .card__image {
     padding: 10px;
+    width: 100%;
+    object-fit: contain;
   }
 
   .card__button-container {

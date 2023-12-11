@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   PaintingStructure,
@@ -23,6 +24,8 @@ const PaintingsForm = ({
     authorInfo: "",
   };
 
+  const navigate = useNavigate();
+
   const [newPainting, setNewPainting] =
     useState<PaintingWithoutId>(blankPainting);
 
@@ -47,6 +50,7 @@ const PaintingsForm = ({
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     submitAction(newPainting as PaintingStructure);
+    navigate("/home");
   };
 
   return (
@@ -56,9 +60,6 @@ const PaintingsForm = ({
       autoComplete="off"
     >
       <div>
-        <label className="form__label" htmlFor="name">
-          Select an artist
-        </label>
         <select
           className="dropdown"
           name="artist"
@@ -66,6 +67,7 @@ const PaintingsForm = ({
           onChange={onChangeEditPainting}
           required
         >
+          <option value="select">Select an artist</option>
           <option value="lou">Dapper Lou</option>
           <option value="armand">Jamel Armand</option>
           <option value="bowling">Frank Bowling</option>
