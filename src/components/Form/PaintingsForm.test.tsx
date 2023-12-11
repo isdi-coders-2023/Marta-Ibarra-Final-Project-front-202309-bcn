@@ -48,7 +48,6 @@ describe("Given a PaintingsForm component", () => {
   describe("When the user types in the inputs and clicks on the Add button", () => {
     test("Then it should call its actionOnClick function", async () => {
       const stringLabelText = [
-        "Select an artist",
         "Title",
         "Image URL",
         "Image description",

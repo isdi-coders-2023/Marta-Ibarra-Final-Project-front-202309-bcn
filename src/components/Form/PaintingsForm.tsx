@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   PaintingStructure,
@@ -23,6 +24,8 @@ const PaintingsForm = ({
     authorInfo: "",
   };
 
+  const navigate = useNavigate();
+
   const [newPainting, setNewPainting] =
     useState<PaintingWithoutId>(blankPainting);
 
@@ -47,6 +50,7 @@ const PaintingsForm = ({
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     submitAction(newPainting as PaintingStructure);
+    navigate("/home");
   };
 
   return (

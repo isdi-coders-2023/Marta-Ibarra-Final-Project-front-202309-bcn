@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+
 import {
   PaintingStructure,
   PaintingWithoutId,
@@ -15,7 +15,6 @@ import {
 const usePaintingsApi = () => {
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const getPaintingsApi = useCallback(async () => {
     try {
@@ -76,7 +75,6 @@ const usePaintingsApi = () => {
         );
 
         dispatch(hideLoadingActionCreator());
-        navigate("/home");
 
         toast.success("Your artwork has been added successfully", {
           className: "toast toast--confirmation",
@@ -89,7 +87,7 @@ const usePaintingsApi = () => {
         toast.error("An error occurred, please try again");
       }
     },
-    [dispatch, navigate],
+    [dispatch],
   );
 
   const loadSelectedPainting = useCallback(
