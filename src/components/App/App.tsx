@@ -8,6 +8,7 @@ import { useAppSelector } from "../../store/hooks";
 import Loading from "../Loading/Loading";
 import AddPage from "../../pages/AddPage/AddPage";
 import DetailPage from "../../pages/DetailPage/DetailPage";
+import Footer from "../Footer/Footer";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -23,6 +24,7 @@ const App = (): React.ReactElement => {
         <Route path="/add" element={<AddPage />} />
         <Route path="/paintings/:paintingId" element={<DetailPage />} />
       </Routes>
+      <Footer />
     </AppStyled>
   );
 };
