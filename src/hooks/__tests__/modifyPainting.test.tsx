@@ -7,40 +7,38 @@ import {
 } from "../../testUtils/customRender";
 import App from "../../components/App/App";
 import usePaintingsApi from "../usePaintingsApi";
-import { modifiedPaintingsMock } from "../../mocks/paintingsMock";
+import {
+  addedPaintingMockToModify,
+  modifiedPaintingsMock,
+} from "../../mocks/paintingsMock";
 import { errorHandlers } from "../../mocks/handlers";
 import server from "../../mocks/node";
 
 describe("Given a usePaintingsApi custom hook", () => {
-  describe("When it is called with its modifyPainting function with a Sugar Ray Robinson", () => {
-    test("Then it should show the text 'Your painting was successfully modified' as a feedback message", async () => {
-      const feedbackMessage = "Your painting was successfully modified";
-      const path = "/paintings/6564d129ab6e912be5400b1f/modify";
+  const {
+    result: {
+      current: { modifyPainting },
+    },
+  } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
 
-      customRenderWithoutRouter(
-        <MemoryRouter initialEntries={[path]}>
-          <App />
-        </MemoryRouter>,
+  const paintingToBeModified = addedPaintingMockToModify[0]._id;
+  const modifiedPaintings = modifiedPaintingsMock;
+
+  describe("When it is called with its modifyPainting function with a Sugar Ray Robinson", () => {
+    test("Then it should show the modified painting", async () => {
+      const response = await modifyPainting(
+        paintingToBeModified,
+        modifiedPaintings[0],
       );
 
-      const {
-        result: {
-          current: { modifyPainting },
-        },
-      } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
-
-      await modifyPainting(modifiedPaintingsMock[0]._id);
-      const feedback = await screen.findByText(feedbackMessage);
-
-      expect(feedback).toBeInTheDocument();
+      expect(response).toStrictEqual(modifiedPaintings);
     });
   });
 
   describe("When it is called with its modifyPainting function with the painting Sugar Ray Robinson, and the response fails", () => {
-    test("Then it should show the feedback message, ' An error occurred, please try again'", async () => {
+    test("Then it should show the feedback message, 'An error occurred, please try again'", async () => {
       server.use(...errorHandlers);
 
-      const expectedPaintingId = modifiedPaintingsMock[0]._id;
       const feedbackMessage = "An error occurred, please try again";
       const path = "/paintings/6564d129ab6e912be5400b1f/modify";
 
@@ -56,7 +54,7 @@ describe("Given a usePaintingsApi custom hook", () => {
         },
       } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
 
-      await modifyPainting(expectedPaintingId);
+      await modifyPainting(paintingToBeModified, modifiedPaintings[0]);
       const feedback = await screen.findByText(feedbackMessage);
 
       expect(feedback).toBeInTheDocument();

@@ -120,3 +120,10 @@ export const modifiedPaintingsMock = [
   jamelPaintingMock,
   asifPaintingMock,
 ];
+
+export const addedPaintingMockToModify = [
+  basquiatPaintingMock,
+  louPaintingMock,
+  jamelPaintingMock,
+  asifPaintingMock,
+];

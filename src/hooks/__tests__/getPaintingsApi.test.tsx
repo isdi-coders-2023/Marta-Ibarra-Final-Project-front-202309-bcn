@@ -15,7 +15,7 @@ describe("Given a usePaintingsApi custom hook", () => {
       } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
       const currentPaintings = await getPaintingsApi();
 
-      expect(currentPaintings).toStrictEqual(expectedPaintings);
+      expect(currentPaintings).toStrictEqual({ paintings: expectedPaintings });
     });
   });
 });

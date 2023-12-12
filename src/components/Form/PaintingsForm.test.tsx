@@ -5,12 +5,18 @@ import PaintingsForm from "./PaintingsForm";
 
 describe("Given a PaintingsForm component", () => {
   const actionOnClick = vi.fn();
+  const addButtonText = "Add";
 
   describe("When it is rendered", () => {
     test("Then it should show an 'Title' label text", () => {
       const expectedLabel = "Title";
 
-      customRender(<PaintingsForm submitAction={actionOnClick} />);
+      customRender(
+        <PaintingsForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
 
       const labelText = screen.getByLabelText(expectedLabel);
 
@@ -22,7 +28,12 @@ describe("Given a PaintingsForm component", () => {
     test("Then it should show Boys who swim written inside the input field", async () => {
       const expectedInputText = "Boys who swim";
 
-      customRender(<PaintingsForm submitAction={actionOnClick} />);
+      customRender(
+        <PaintingsForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
 
       const labelText = screen.getByLabelText("Title");
 
@@ -38,7 +49,12 @@ describe("Given a PaintingsForm component", () => {
     test("Then it should show a button with the text 'Add'", () => {
       const expectedButtonText = "Add";
 
-      customRender(<PaintingsForm submitAction={actionOnClick} />);
+      customRender(
+        <PaintingsForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
       const buttonText = screen.getByText(expectedButtonText);
 
       expect(buttonText).toBeInTheDocument();
@@ -59,7 +75,12 @@ describe("Given a PaintingsForm component", () => {
       const expectedButtonText = "Add";
       const expectedInputNumber = 2000;
 
-      customRender(<PaintingsForm submitAction={actionOnClick} />);
+      customRender(
+        <PaintingsForm
+          submitAction={actionOnClick}
+          buttonText={addButtonText}
+        />,
+      );
 
       for (const labelText of stringLabelText) {
         const inputElement = screen.getByLabelText(labelText);
