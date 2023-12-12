@@ -9,6 +9,7 @@ import Loading from "../Loading/Loading";
 import AddPage from "../../pages/AddPage/AddPage";
 import DetailPage from "../../pages/DetailPage/DetailPage";
 import Footer from "../Footer/Footer";
+import ModifyPage from "../../pages/ModifyPage/ModifyPage";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -23,6 +24,7 @@ const App = (): React.ReactElement => {
         <Route path="/home" element={<Homepage />} />
         <Route path="/add" element={<AddPage />} />
         <Route path="/paintings/:paintingId" element={<DetailPage />} />
+        <Route path="/paintings/modify/:paintingId" element={<ModifyPage />} />
       </Routes>
       <Footer />
     </AppStyled>
