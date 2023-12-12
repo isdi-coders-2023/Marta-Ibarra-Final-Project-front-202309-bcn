@@ -7,7 +7,10 @@ import {
 } from "../../testUtils/customRender";
 import App from "../../components/App/App";
 import usePaintingsApi from "../usePaintingsApi";
-import { modifiedPaintingsMock } from "../../mocks/paintingsMock";
+import {
+  basquiatPaintingMockModified,
+  modifiedPaintingsMock,
+} from "../../mocks/paintingsMock";
 import { errorHandlers } from "../../mocks/handlers";
 import server from "../../mocks/node";
 
@@ -29,7 +32,10 @@ describe("Given a usePaintingsApi custom hook", () => {
         },
       } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
 
-      await modifyPainting(modifiedPaintingsMock[0]._id);
+      await modifyPainting(
+        modifiedPaintingsMock[0]._id,
+        basquiatPaintingMockModified,
+      );
       const feedback = await screen.findByText(feedbackMessage);
 
       expect(feedback).toBeInTheDocument();
@@ -56,7 +62,7 @@ describe("Given a usePaintingsApi custom hook", () => {
         },
       } = renderHook(() => usePaintingsApi(), { wrapper: providerWrapper });
 
-      await modifyPainting(expectedPaintingId);
+      await modifyPainting(expectedPaintingId, basquiatPaintingMockModified);
       const feedback = await screen.findByText(feedbackMessage);
 
       expect(feedback).toBeInTheDocument();

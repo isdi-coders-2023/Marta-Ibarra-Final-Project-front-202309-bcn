@@ -10,8 +10,10 @@ import mainTheme from "../styles/mainTheme";
 import { uiReducer } from "../store/paintings/features/ui/uiSlice";
 import { store } from "../store";
 import { paintingsReducer } from "../store/paintings/features/paintings/paintingsSlice";
-import { paintingsMock } from "../mocks/paintingsMock";
-import { PaintingStructure } from "../store/paintings/features/paintings/types";
+import {
+  basquiatPaintingMockModified,
+  paintingsMock,
+} from "../mocks/paintingsMock";
 
 export const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
@@ -22,7 +24,7 @@ export const customRender = (children: React.ReactElement) => {
     preloadedState: {
       paintingsState: {
         paintings: paintingsMock,
-        selectedPainting: {} as PaintingStructure,
+        selectedPainting: basquiatPaintingMockModified,
       },
       uiState: { isLoading: false },
     },
@@ -49,7 +51,7 @@ export const customRenderWithoutRouter = (children: React.ReactElement) => {
     preloadedState: {
       paintingsState: {
         paintings: paintingsMock,
-        selectedPainting: {} as PaintingStructure,
+        selectedPainting: basquiatPaintingMockModified,
       },
       uiState: { isLoading: false },
     },

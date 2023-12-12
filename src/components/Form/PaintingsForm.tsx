@@ -96,7 +96,7 @@ const PaintingsForm = ({
           type="text"
           id="title"
           onChange={onChangeEditPainting}
-          value={newPainting.title}
+          defaultValue={newPainting.title}
           required
         />
       </div>
@@ -108,10 +108,10 @@ const PaintingsForm = ({
           className="form__input"
           type="number"
           id="year"
-          min={0}
+          min={1000}
           max={2024}
           onChange={onChangeEditPainting}
-          value={newPainting.year}
+          defaultValue={newPainting.year}
           required
         />
       </div>
@@ -125,7 +125,7 @@ const PaintingsForm = ({
           id="price"
           min={0}
           onChange={onChangeEditPainting}
-          value={newPainting.price}
+          defaultValue={newPainting.price}
           required
         />
       </div>
@@ -138,7 +138,7 @@ const PaintingsForm = ({
           type="url"
           id="image"
           onChange={onChangeEditPainting}
-          value={newPainting.image}
+          defaultValue={newPainting.image}
           required
         />
       </div>
@@ -152,7 +152,7 @@ const PaintingsForm = ({
           rows={10}
           cols={10}
           onChange={onChangeEditPainting}
-          value={newPainting.imageDescription}
+          defaultValue={newPainting.imageDescription}
           required
         />
       </div>
@@ -166,7 +166,7 @@ const PaintingsForm = ({
           rows={10}
           cols={10}
           onChange={onChangeEditPainting}
-          value={newPainting.authorInfo}
+          defaultValue={newPainting.authorInfo}
           required
         />
       </div>
