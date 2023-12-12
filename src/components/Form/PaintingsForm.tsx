@@ -9,12 +9,16 @@ import PaintingsFormStyled from "./PaintingsFormStyled";
 
 interface PaintingFormProps {
   submitAction: (newPainting: PaintingStructure) => void;
+  selectedPainting?: PaintingStructure;
+  buttonText: string;
 }
 
 const PaintingsForm = ({
   submitAction,
+  selectedPainting,
+  buttonText,
 }: PaintingFormProps): React.ReactElement => {
-  const blankPainting: PaintingWithoutId = {
+  let blankPainting: PaintingWithoutId = {
     name: "",
     image: "",
     title: "",
@@ -24,10 +28,13 @@ const PaintingsForm = ({
     authorInfo: "",
   };
 
-  const navigate = useNavigate();
-
+  if (selectedPainting) {
+    blankPainting = selectedPainting;
+  }
   const [newPainting, setNewPainting] =
     useState<PaintingWithoutId>(blankPainting);
+
+  const navigate = useNavigate();
 
   const onChangeEditPainting = (
     event:
@@ -51,6 +58,7 @@ const PaintingsForm = ({
     event.preventDefault();
     submitAction(newPainting as PaintingStructure);
     navigate("/home");
+    scrollTo(0, 0);
   };
 
   return (
@@ -65,6 +73,7 @@ const PaintingsForm = ({
           name="artist"
           id="name"
           onChange={onChangeEditPainting}
+          value={newPainting.name}
         >
           <option value="">Select an artist</option>
           <option value="lou">Dapper Lou</option>
@@ -87,6 +96,7 @@ const PaintingsForm = ({
           type="text"
           id="title"
           onChange={onChangeEditPainting}
+          value={newPainting.title}
           required
         />
       </div>
@@ -98,7 +108,10 @@ const PaintingsForm = ({
           className="form__input"
           type="number"
           id="year"
+          min={0}
+          max={2024}
           onChange={onChangeEditPainting}
+          value={newPainting.year}
           required
         />
       </div>
@@ -110,7 +123,9 @@ const PaintingsForm = ({
           className="form__input"
           type="number"
           id="price"
+          min={0}
           onChange={onChangeEditPainting}
+          value={newPainting.price}
           required
         />
       </div>
@@ -123,6 +138,7 @@ const PaintingsForm = ({
           type="url"
           id="image"
           onChange={onChangeEditPainting}
+          value={newPainting.image}
           required
         />
       </div>
@@ -131,9 +147,12 @@ const PaintingsForm = ({
           Image description
         </label>
         <textarea
-          className="form__input"
+          className="form__input form__textarea"
           id="imageDescription"
+          rows={10}
+          cols={10}
           onChange={onChangeEditPainting}
+          value={newPainting.imageDescription}
           required
         />
       </div>
@@ -142,14 +161,17 @@ const PaintingsForm = ({
           About the author
         </label>
         <textarea
-          className="form__input"
+          className="form__input form__textarea"
           id="authorInfo"
+          rows={10}
+          cols={10}
           onChange={onChangeEditPainting}
+          value={newPainting.authorInfo}
           required
         />
       </div>
       <div className="button__container">
-        <Button text={"Add"} className={"button__big"} type={"submit"} />
+        <Button text={buttonText} className="button__big" type="submit" />
       </div>
     </PaintingsFormStyled>
   );
