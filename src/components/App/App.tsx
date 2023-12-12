@@ -10,6 +10,7 @@ import AddPage from "../../pages/AddPage/AddPage";
 import DetailPage from "../../pages/DetailPage/DetailPage";
 import Footer from "../Footer/Footer";
 import ModifyPage from "../../pages/ModifyPage/ModifyPage";
+import PageNotFound from "../../pages/PageNotFound/PageNotFound";
 
 const App = (): React.ReactElement => {
   const uiState = useAppSelector((state) => state.uiState);
@@ -25,6 +26,7 @@ const App = (): React.ReactElement => {
         <Route path="/add" element={<AddPage />} />
         <Route path="/paintings/:paintingId" element={<DetailPage />} />
         <Route path="/paintings/modify/:paintingId" element={<ModifyPage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </AppStyled>
