@@ -6,6 +6,7 @@ const PageNotFoundStyled = styled.div`
   text-align: center;
   gap: 70px;
   padding: 70px;
+  object-fit: contain;
 
   .page__title {
     font-family: Inter;

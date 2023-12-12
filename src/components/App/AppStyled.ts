@@ -5,7 +5,8 @@ const AppStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  position: relative;
+  min-height: 100vh;
 `;
 
 export default AppStyled;
