@@ -9,6 +9,9 @@ const FooterStyled = styled.footer`
   color: #fff;
   font-size: 13px;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 3px;
 `;
 
 export default FooterStyled;
