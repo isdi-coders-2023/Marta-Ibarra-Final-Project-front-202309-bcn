@@ -7,8 +7,8 @@ const PageNotFound = (): React.ReactElement => {
       <img
         src="/images/pageNotFound.png"
         alt="page not found"
-        width="200"
-        height="200"
+        width="163"
+        height="164"
       />
     </PageNotFoundStyled>
   );
