@@ -114,7 +114,10 @@ const usePaintingsApi = () => {
   );
 
   const modifyPainting = useCallback(
-    async (id: string): Promise<PaintingStructure | void> => {
+    async (
+      id: string,
+      modifiedPainting: PaintingWithoutId,
+    ): Promise<PaintingStructure | void> => {
       try {
         dispatch(showLoadingActionCreator());
 
@@ -122,6 +125,7 @@ const usePaintingsApi = () => {
           data: { painting },
         } = await axios.patch<{ painting: PaintingStructure }>(
           `/paintings/${id}/modify`,
+          modifiedPainting,
         );
 
         dispatch(hideLoadingActionCreator());
