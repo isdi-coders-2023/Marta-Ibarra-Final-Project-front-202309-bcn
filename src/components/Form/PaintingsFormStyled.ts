@@ -15,7 +15,11 @@ const PaintingsFormStyled = styled.form`
 
   .form__input {
     width: 100%;
-    padding: 5px;
+    padding: 8px;
+  }
+
+  .form__textarea {
+    resize: none;
   }
 
   .label {
