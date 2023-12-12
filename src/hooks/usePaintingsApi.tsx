@@ -113,11 +113,41 @@ const usePaintingsApi = () => {
     [dispatch],
   );
 
+  const modifyPainting = useCallback(
+    async (id: string): Promise<PaintingStructure | void> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const {
+          data: { painting },
+        } = await axios.patch<{ painting: PaintingStructure }>(
+          `/paintings/${id}/modify`,
+        );
+
+        dispatch(hideLoadingActionCreator());
+
+        toast.success("Your painting was successfully modified", {
+          className: "toast toast--confirmation",
+        });
+
+        return painting;
+      } catch {
+        dispatch(hideLoadingActionCreator());
+
+        toast.error("An error occurred, please try again", {
+          className: "toast toast-error",
+        });
+      }
+    },
+    [dispatch],
+  );
+
   return {
     getPaintingsApi,
     deletePainting,
     addnewPainting,
     loadSelectedPainting,
+    modifyPainting,
   };
 };
 
