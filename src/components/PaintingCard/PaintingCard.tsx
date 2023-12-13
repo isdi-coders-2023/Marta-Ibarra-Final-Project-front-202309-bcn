@@ -31,7 +31,7 @@ const PaintingCard = ({
 
     dispatch(loadSelectedPaintingActionCreator(selectedPainting!));
 
-    navigate("/paintings/modify/:paintingId");
+    navigate(`/paintings/modify/${_id}`);
   };
 
   return (

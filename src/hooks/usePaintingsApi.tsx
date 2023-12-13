@@ -39,15 +39,14 @@ const usePaintingsApi = () => {
 
   const deletePainting = useCallback(
     async (paintingId: string): Promise<void> => {
-      dispatch(showLoadingActionCreator());
-
       try {
+        dispatch(showLoadingActionCreator());
         const { data } = await axios.delete(`/paintings/${paintingId}`);
-        dispatch(hideLoadingActionCreator());
         toast.success("Painting deleted successfully", {
           position: toast.POSITION.TOP_RIGHT,
           className: "toast toast--confirmation",
         });
+        dispatch(hideLoadingActionCreator());
 
         return data;
       } catch {
@@ -64,9 +63,8 @@ const usePaintingsApi = () => {
     async (
       newPainting: PaintingWithoutId,
     ): Promise<PaintingStructure | undefined> => {
-      dispatch(showLoadingActionCreator());
-
       try {
+        dispatch(showLoadingActionCreator());
         const {
           data: { painting },
         } = await axios.post<{ painting: PaintingStructure }>(
@@ -105,6 +103,7 @@ const usePaintingsApi = () => {
 
         return painting;
       } catch {
+        dispatch(hideLoadingActionCreator());
         toast.error("An error occurred, please try again", {
           className: "toast toast-error",
         });
