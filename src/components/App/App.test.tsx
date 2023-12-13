@@ -62,4 +62,44 @@ describe("Given an App component", () => {
       expect(title).toBeInTheDocument;
     });
   });
+
+  describe("When it receives a path to /paintings/_id and it renders the Detail Page", () => {
+    test("Then it should show the name Jean Michel Basquiat in a heading", () => {
+      const expectedName = "Jean Michel Basquiat";
+      const path = "/paintings/6564d0f8ab6e912be5400b17";
+
+      customRenderWithoutRouter(
+        <MemoryRouter initialEntries={[path]}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const artistName = screen.getByRole("heading", { name: expectedName });
+
+      expect(artistName).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is rendered in the homepage and the user clicks on the Oliver Okolo 'Edit info' button", () => {
+    test("Then it should go to the Oliver Okolo ModifyPage", async () => {
+      const expectedModifyButton = "Edit info";
+      const expectedModifyTitlePage = "Oliver Okolo";
+
+      customRenderWithoutRouter(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+      );
+
+      const modifyButton = screen.getAllByRole("button", {
+        name: expectedModifyButton,
+      });
+
+      await userEvent.click(modifyButton[0]);
+
+      const modifyArtistPage = await screen.findByText(expectedModifyTitlePage);
+
+      expect(modifyArtistPage).toBeInTheDocument;
+    });
+  });
 });
