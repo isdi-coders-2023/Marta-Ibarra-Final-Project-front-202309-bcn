@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   PaintingStructure,
   PaintingWithoutId,
@@ -18,7 +18,7 @@ const PaintingsForm = ({
   selectedPainting,
   buttonText,
 }: PaintingFormProps): React.ReactElement => {
-  let blankPainting: PaintingWithoutId = {
+  const blankPainting: PaintingWithoutId = {
     name: "",
     image: "",
     title: "",
@@ -28,31 +28,33 @@ const PaintingsForm = ({
     authorInfo: "",
   };
 
-  if (selectedPainting) {
-    blankPainting = selectedPainting;
-  }
-  const [newPainting, setNewPainting] =
-    useState<PaintingWithoutId>(blankPainting);
-
   const navigate = useNavigate();
 
-  const onChangeEditPainting = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-      | React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    setNewPainting((currentNewPainting) => ({
-      ...currentNewPainting,
-      [event.target.id]: event.target.value,
-    }));
-  };
+  const initialState = selectedPainting ?? blankPainting;
+
+  const [newPainting, setNewPainting] =
+    useState<PaintingWithoutId>(initialState);
 
   useEffect(() => {
-    const newPaintingValues = Object.values(newPainting);
+    if (selectedPainting) {
+      setNewPainting({ ...selectedPainting });
+    }
+  }, [selectedPainting]);
 
-    newPaintingValues.every((value) => value !== "");
-  }, [newPainting]);
+  const onChangeEditPainting = useCallback(
+    (
+      event:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.ChangeEvent<HTMLTextAreaElement>
+        | React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+      setNewPainting((newPainting) => ({
+        ...newPainting,
+        [event.target.id]: event.target.value,
+      }));
+    },
+    [],
+  );
 
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
