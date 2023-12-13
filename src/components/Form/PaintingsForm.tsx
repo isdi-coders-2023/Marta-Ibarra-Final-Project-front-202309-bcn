@@ -78,15 +78,15 @@ const PaintingsForm = ({
           value={newPainting.name}
         >
           <option value="">Select an artist</option>
-          <option value="lou">Dapper Lou</option>
-          <option value="armand">Jamel Armand</option>
-          <option value="bowling">Frank Bowling</option>
-          <option value="okolo">Oliver Okolo</option>
-          <option value="maluleke">Terence Maluleke</option>
-          <option value="oliver">Tariq Oliver</option>
-          <option value="basquiat">Jean-Michel Basquiat</option>
-          <option value="hoque">Asif Hoque</option>
-          <option value="chanel">Nina Chanel</option>
+          <option value="Dapper Lou">Dapper Lou</option>
+          <option value="Jamel Armand">Jamel Armand</option>
+          <option value="Frank Bowling">Frank Bowling</option>
+          <option value="Oliver Okolo">Oliver Okolo</option>
+          <option value="Terence Maluleke">Terence Maluleke</option>
+          <option value="Tariq Oliver">Tariq Oliver</option>
+          <option value="Jean-Michel Basquiat">Jean-Michel Basquiat</option>
+          <option value="Asif Hoqueue">Asif Hoque</option>
+          <option value="Nina Chanel">Nina Chanel</option>
         </select>
       </div>
       <div>
