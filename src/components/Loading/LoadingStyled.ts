@@ -6,7 +6,7 @@ const LoadingStyled = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #00000080;
+  background-color: #fff;
   position: absolute;
   bottom: 0px;
   left: 0px;
